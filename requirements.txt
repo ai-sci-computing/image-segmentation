@@ -1,0 +1,38 @@
+# =============================================================================
+# requirements.txt — Roof Segmentation / Few-Shot Comparison
+# =============================================================================
+#
+# Pinned to major versions only; exact minor versions are left to pip
+# resolution so that pip is free to find compatible wheels. Re-pin to
+# full versions in a `requirements.lock.txt` once the stack is stable.
+#
+# Grouped by role in the pipeline so the purpose of each package is clear.
+# =============================================================================
+
+# --- Core numerics & I/O ---
+numpy>=1.26,<3
+opencv-python>=4.9,<5
+tifffile>=2024.1           # backup TIFF reader for edge cases cv2 can't handle
+Pillow>=10.0,<12
+
+# --- Deep learning ---
+torch>=2.2,<3
+torchvision>=0.17,<1
+
+# --- Segmentation libraries ---
+segmentation-models-pytorch>=0.3.4   # SMP Unet / DeepLabV3+ for attempts #1-#3
+# segment-anything is installed separately — Meta ships it via GitHub rather
+# than PyPI. See the install step in the README once written:
+#   pip install git+https://github.com/facebookresearch/segment-anything.git
+
+# --- Augmentation ---
+albumentations>=1.4,<2
+
+# --- Viz & notebooks ---
+matplotlib>=3.8,<4
+jupyter>=1.0
+ipykernel>=6.29
+
+# --- Test + dev ---
+pytest>=8.0
+pytest-xdist>=3.5          # parallel test runner for faster local TDD loop

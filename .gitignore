@@ -1,0 +1,46 @@
+# =============================================================================
+# .gitignore — Roof Segmentation / Few-Shot Comparison
+# =============================================================================
+#
+# What we commit:
+#   - README.md (the project plan)
+#   - scripts/, src/, tests/, notebooks/ (code)
+#   - patches/ (~15 MB, the dataset-of-record — see README § Preprocessing)
+#
+# What we do NOT commit:
+#   - data/ — the 5000×5000 source TIFFs are local-only. They will be
+#     removed entirely once patches/ is finalized and visually verified.
+#   - results/ — per-attempt training artifacts (checkpoints, histories,
+#     overlays). Reproducible from code + patches/, so no reason to carry.
+#   - Python, editor, and OS cruft.
+# =============================================================================
+
+# Source data — local only, not part of the repo
+data/
+
+# Training run artifacts — regenerable, kept out of version control
+results/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter / Colab
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
